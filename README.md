@@ -1,40 +1,49 @@
-# Prismic Gatsby Example Blog
+# Gatsby Starter: Resume/CV Site with Prismic
+This project is part of a YouTube series that's about building a Resume/CV site using Gatsby, Prismic and Netlify from scratch. You can check out the following series here:
 
-> [Gatsby](https://www.gatsbyjs.org/) example blog project with content managed in [Prismic](https://prismic.io)
+https://www.youtube.com/watch?v=9eCOcJZR578&list=PLy3RjrA8UIYJZ08w6bmSDNX10ysI8JuDk
 
-## Check out our article for a step by step guide to getting this project up and running
+Feel free to Subscribe too :heart:
 
-> [Prismic project guide](https://intercom.help/prismicio/examples/gatsby-js-samples/sample-blog-with-api-based-cms-gatsbyjs)
+[Preview site (deployed with Netlify)](https://compassionate-morse-5204bf.netlify.com/)
 
-## Launch this project in your local environment
+## Guide
+### Project setup
+- Fork this repo and clone it to your computer
+- Create a `.env` file in the project
+- Go to Prismic and get your API KEY - Watch https://youtu.be/2hCm0RwQrWU?list=PLy3RjrA8UIYJZ08w6bmSDNX10ysI8JuDk&t=130
+- Copy and paste it into the newly created file - should look something like `API_KEY=PC5XSkxWNMJBQURLbkFCbFFn...`
 
-Run the following commands:
+### Prismic repo setup
+- Create a new Prismic repository
+- Go to `gatsby-config.js` file and edit the value of `repositoryName` to your Prismic repo name
 
-``` bash
-npm install
-npm start
-```
-Then you can access it at [http://localhost:8000](http://localhost:8000).
+### Prismic custom types
+- Create a new single custom type called `Homepage`
+- Go to `config/homepage.json` in your project and copy everything in that file
+- Go to your newly created custom type and paste everything into the JSON Editor on the right side
 
-## Launching the project in production
+### Publish site from Prismic
+- Go to content tab
+- Click on the item in the table
+- Go populate the content like so https://youtu.be/El0qhYe6Js8?list=PLy3RjrA8UIYJZ08w6bmSDNX10ysI8JuDk&t=199
+- And like so https://youtu.be/ZiJ6w_qN_bo?list=PLy3RjrA8UIYJZ08w6bmSDNX10ysI8JuDk&t=39
+- Save and publish your site
 
-Run the following commands to compile the project and launch the server for production:
+### Preview site
+- You can now do `npm install`
+- And then `npm run dev`
+- Preview your site
 
-``` bash
-npm run build
-npm run serve
-```
+### Setup Prismic trigger to Netlify
+- Watch the following: https://youtu.be/ZiJ6w_qN_bo?list=PLy3RjrA8UIYJZ08w6bmSDNX10ysI8JuDk&t=396
 
-## Learn more about using Prismic with Gatsby.js
+## Credits
+- [Gatsby Prismic Starter by LekoArts](https://github.com/LekoArts/gatsby-starter-prismic)
+- [Standard Resume](https://standardresume.co/)
+- [Thanks to Ryan Tsao for the styling of link tags inspiration](https://ryantsao.com/blog/virtual-css-with-styletron)
 
-> [Prismic Gatsby.js Documentation](https://prismic.io/docs/reactjs/getting-started/prismic-gatsby)
-
-## License
-
-This software is licensed under the Apache 2 license, quoted below.
-
-Copyright 2019 Prismic (http://prismic.io).
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this project except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+## Socials
+- Twitter: https://twitter.com/deamlabs
+- YouTube: https://www.youtube.com/user/DeamMe
+- SoundCloud: https://soundcloud.com/deam
