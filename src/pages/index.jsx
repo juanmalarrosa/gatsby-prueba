@@ -3,97 +3,73 @@ import { graphql } from 'gatsby'
 import { Parser } from 'html-to-react'
 import React from 'react'
 import Layout from '../components/Layout'
+import render from 'dom-serializer';
 
-const container = css`
-  margin: 0 auto;
-  padding: 4rem 2rem 8rem 2rem;
-  max-width: 600px;
-  color: #333333;
 
-  h1 {
-    font-size: 30px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-  }
+const styles = css`
 
-  h2 {
-    margin-top: 4rem;
-    font-size: 12px;
-    font-weight: 600;
-    color: #c9cccf;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-  }
-
-  p {
-    margin-bottom: 0.25rem;
-  }
-
-  a {
-    transition: box-shadow 160ms ease 0s;
-    box-shadow: rgb(238, 251, 255) 0px -9px 0px inset;
-    border-bottom: 2px solid rgb(207, 243, 255);
-    text-decoration: none;
-    color: #323336;
-    &:hover {
-      box-shadow: rgb(207, 243, 255) 0px -1.2em 0px inset;
-    }
-  }
-
-  .section ul {
-    margin-top: 0.5rem;
-    margin-left: 2.5rem;
-    list-style: disc;
-  }
-
-  .section li {
-    margin-bottom: 0.5rem;
-  }
-
-  .grey {
-    color: #96999b;
-  }
-
-  .headline {
-    display: block;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 18px;
-    letter-spacing: 1.2px;
-    padding-top: 2rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .skills ul {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-  }
-
-  .skills li {
-    margin-bottom: 1rem;
-    margin-right: 0.5rem;
-    padding: 0.25rem 1rem;
-    background-color: #f1f5f7;
-    white-space: nowrap;
-  }
 `
 
-const htmlToReactParser = new Parser()
+//const htmlToReactParser = new Parser()
 
 export default props => {
   const { data } = props
   const content = data.prismicHomepage.data
   const name = content.name.text
-  const description = content.description.html
+  const modulos = content.modulos1;
+
+  console.log(modulos)
+
+  var divStyle1 = {
+    backgroundImage: 'url(' + modulos[0].modulo.document[0].data.image.url + ')',
+    
+  };
+  var divStyle2 = {
+    backgroundImage: 'url(' + modulos[1].modulo.document[0].data.image.url + ')',
+    
+  };
+  
+
+  
 
 
   return (
     <Layout>
-      <div css={container}>
-        <h1>{name}</h1>
-        {htmlToReactParser.parse(description)}
+      <div css={styles}>
+
+        <section id="modulos" className="section wrapper mini text-center">
+
+          <h2 className="subtitle">{name}</h2>
+
+          <ul className="list">
+
+
+          <li className="item">
+              <div className="img-holder">
+                <span style={divStyle1} className="img"></span>
+              </div>
+              <div className="holder">
+                <h3 className="title">{modulos[0].modulo.document[0].data.title.text}</h3>
+                <p className="text">{modulos[0].modulo.document[0].data.description.text}</p>
+              </div>
+            </li>
+          <li className="item">
+              <div className="img-holder">
+                <span style={divStyle2}  className="img"></span>
+              </div>
+              <div className="holder">
+                <h3 className="title">{modulos[1].modulo.document[0].data.title.text}</h3>
+                <p className="text">{modulos[1].modulo.document[0].data.description.text}</p>
+              </div>
+            </li>
+
+
+
+          </ul>
+
+        </section>
+
+
       </div>
     </Layout>
   )
@@ -103,14 +79,34 @@ export const pageQuery = graphql`
   query {
     prismicHomepage {
       data {
+
         name {
           text
         }
         description {
           html
         }
-       
-        
+
+        modulos1 {
+          modulo {
+            id
+            document {
+              data {
+                description {
+                  text
+                }
+                title {
+                  text
+                }
+                image{
+                  url
+                }
+              }
+            }
+          }
+        }
+
+
       }
     }
   }
